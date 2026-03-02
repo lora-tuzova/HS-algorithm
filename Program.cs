@@ -49,8 +49,10 @@ class HS
     private static Semaphore _gate;
     private static int gateCounter = 0;
     private static System.Threading.ReaderWriterLock _lock = new System.Threading.ReaderWriterLock();
+
     private static List<ConcurrentQueue<Message>> mailboxes;
     private static List<Node> nodes;
+
     private static bool leaderChosen = false;
     private static int messageCounter = 0;
     
@@ -123,7 +125,6 @@ class HS
         while (!leaderChosen){
             ProcessMessages(thisNode); // One phase per call
         }
-        //ProcessMessages(thisNode);
     }
 
     private static void ProcessMessages (Node thisNode)
